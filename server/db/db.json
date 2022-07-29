@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "title": "first todo",
+      "content": "first todo",
+      "id": "GLTqhhGQQNpnXhFbOve_h",
+      "createdAt": "2022-07-29T08:00:26.907Z",
+      "updatedAt": "2022-07-29T08:00:26.907Z"
+    }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "12312312",
+      "id": "3sgXq35rzPVeg-ntoSeGz",
+      "createdAt": "2022-07-29T01:12:54.785Z",
+      "updatedAt": "2022-07-29T01:12:54.785Z"
+    }
+  ]
+}

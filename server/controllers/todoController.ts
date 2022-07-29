@@ -24,7 +24,6 @@ export const getTodos = async (req: Request, res: Response) => {
   const { countOnly } = req.query;
 
   const todos = todoService.findTodos();
-
   if (todos) {
     if (countOnly) {
       return res.status(StatusCodes.OK).send(createResponse(todos.length));
