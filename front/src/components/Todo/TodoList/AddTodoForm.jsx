@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useContext, useRef } from "react";
-import TodoContext from "../../../store/TodoContext";
+import { useDispatch } from "react-redux";
+import { addTodoData } from "../../../store/TodoActions";
+import TodoContext, { todoActions } from "../../../store/TodoSlice";
 import FormLayout from "../../Layout/FormLayout";
 import Button from "../../UI/Button";
 
 const AddTodoForm = () => {
   const titleRef = useRef();
   const contentRef = useRef();
-  const todoCtx = useContext(TodoContext);
+  const dispatch = useDispatch();
 
   // api submit
   const onSubmit = async (event) => {
@@ -15,33 +17,13 @@ const AddTodoForm = () => {
 
     const enteredTitle = titleRef.current.value;
     const enteredContent = contentRef.current.value;
-    const token = localStorage.getItem("token");
 
-    try {
-      const url = "http://localhost:8080/todos";
-      const response = await axios.post(
-        url,
-        {
-          title: enteredTitle,
-          content: enteredContent,
-        },
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      console.log(response);
+    const newTodo = {
+      title: enteredTitle,
+      content: enteredContent,
+    };
 
-      todoCtx.addTodo({
-        title: enteredTitle,
-        content: enteredContent,
-      });
-
-      // code
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(addTodoData(newTodo));
 
     // initial
     titleRef.current.value = "";
