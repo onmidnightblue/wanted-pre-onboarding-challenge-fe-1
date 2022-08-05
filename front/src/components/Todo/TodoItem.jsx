@@ -2,10 +2,26 @@ import React from "react";
 import styled from "styled-components";
 
 const TodoItem = (props) => {
+  const onCheckedHandler = (event) => {
+    const userCheckedId = event.target.id;
+    const checked = event.target.checked;
+
+    if (checked) {
+      props.checkedHandler(userCheckedId);
+    } else {
+      props.checkedHandler(null);
+    }
+  };
+
   return (
     <Styles.List>
       <label htmlFor={props.id}>
-        <input type="checkbox" id={props.id} />
+        <input
+          type="checkbox"
+          id={props.id}
+          onChange={onCheckedHandler}
+          checked={props.checkedId === props.id ? true : false}
+        />
         <p>{props.title}</p>
       </label>
     </Styles.List>

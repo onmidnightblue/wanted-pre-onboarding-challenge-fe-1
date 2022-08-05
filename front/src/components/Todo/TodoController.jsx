@@ -1,65 +1,59 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import AddTodoForm from "./AddTodoForm";
-import ModifyTodoForm from "./ModifyTodoForm";
-import axios from "axios";
+import TodoForm from "./TodoForm";
 
-const TodoController = () => {
+const TodoController = (props) => {
   const [addFormOpen, setAddFormOpen] = useState(false);
   const [modifyFormOpen, setModifyFormOpen] = useState(false);
 
-  // add
-  const addFormOpenHandler = () => {
-    if (modifyFormOpen) {
+  // form open
+  const formOpenHandler = (event) => {
+    const id = event.target.id;
+
+    if (id === "add") {
+      if (addFormOpen) return setAddFormOpen(false);
       setModifyFormOpen(false);
+      setAddFormOpen(true);
     }
-    setAddFormOpen((addFormOpen) => !addFormOpen);
-  };
-
-  // modify
-  const modifyFormOpenHandler = () => {
-    if (addFormOpen) {
+    if (id === "modify") {
+      if (modifyFormOpen) return setModifyFormOpen(false);
       setAddFormOpen(false);
+      setModifyFormOpen(true);
     }
-    setModifyFormOpen((modifyFormOpen) => !modifyFormOpen);
   };
 
-  // delete
-  const deletetodoHandler = async () => {
-    const token = localStorage.getItem("token");
-
-    try {
-      const url = "http://localhost:8080/todos";
-      const response = await axios.delete(url, {
-        headers: {
-          Authorization: token,
-        },
-      });
-      console.log(response);
-      // code
-    } catch (error) {
-      console.log(error);
-    }
+  // modify form close
+  const modifyFormClose = () => {
+    setModifyFormOpen(false);
   };
 
   return (
     <>
-      {addFormOpen && <AddTodoForm />}
-      {modifyFormOpen && <ModifyTodoForm onClose={modifyFormOpenHandler} />}
+      {addFormOpen && <TodoForm formOpenId="add" todoHandler={props.addTodo} />}
+      {modifyFormOpen && (
+        <TodoForm
+          formOpenId="modify"
+          todoHandler={props.modifyTodo}
+          existCheckedId={props.checkedId}
+          onClose={modifyFormClose}
+        />
+      )}
       <Styles.Controll>
         <span
-          onClick={addFormOpenHandler}
+          id="add"
+          onClick={formOpenHandler}
           className={addFormOpen ? "active" : ""}
         >
           add
         </span>
         <span
-          onClick={modifyFormOpenHandler}
+          id="modify"
+          onClick={formOpenHandler}
           className={modifyFormOpen ? "active" : ""}
         >
           modify
         </span>
-        <span onClick={deletetodoHandler}>delete</span>
+        <span onClick={props.removeTodo}>delete</span>
       </Styles.Controll>
     </>
   );

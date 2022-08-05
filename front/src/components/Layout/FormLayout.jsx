@@ -55,6 +55,9 @@ const Styles = {
         text-decoration: underline;
       }
     }
+    .error {
+      color: #777;
+    }
   `,
 };
 
