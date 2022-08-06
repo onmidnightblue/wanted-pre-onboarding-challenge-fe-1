@@ -10,7 +10,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<LoggedContextProvider />}>
-          <Route path="/" element={<TodosPage />} />
+          <Route path="/" element={<TodosPage />}>
+            <Route path=":todoId" element={<TodosPage />} />
+          </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="*" element={<NotFoundPage />} />

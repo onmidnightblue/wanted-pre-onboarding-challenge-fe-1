@@ -12,48 +12,63 @@ import TodoController from "./TodoController";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
 import OuterLayout from "../Layout/OuterLayout";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
   const todoDetail = useSelector((state) => state.todos.todoDetail);
   const [checkedId, setCheckedId] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+  const getId = localStorage.getItem("todoId");
+  console.log(getId);
 
   // initial fetch todo data
   useEffect(() => {
     dispatch(fetchTodoData());
+
+    if (getId) {
+      navigate(`/${getId}`);
+      setCheckedId(getId);
+      dispatch(fetchTodoDetailData(getId));
+    }
   }, []);
 
-  // get check id
+  // goback & goforward refetch todo data
+  useEffect(() => {
+    if (getId) return;
+    if (checkedId) {
+      const updateId = pathname.replace("/", "");
+      setCheckedId(updateId);
+      localStorage.setItem("todoId", updateId);
+      dispatch(fetchTodoDetailData(checkedId));
+    }
+  }, [pathname]);
+
+  // set checked id
   const onCheckedHandler = (id) => {
+    navigate(`/${id}`);
     setCheckedId(id);
+    localStorage.setItem("todoId", id);
   };
 
-  // add todo data
+  // add todo data & modify todo data & delete todo data
   const addTodoHandler = (newTodo) => {
     dispatch(addTodoData(newTodo));
+    setCheckedId(null);
   };
-
-  // modify todo data
   const modifyTodoHandler = (newTodo, checkedId) => {
     console.log(checkedId);
     dispatch(modifyTodoData(newTodo, checkedId));
   };
-
-  // delete todo data
   const removeTodoHandler = () => {
     if (checkedId) {
       dispatch(deleteTodo(checkedId));
       setCheckedId(null);
     }
   };
-
-  // checked list detail data
-  useEffect(() => {
-    if (checkedId) {
-      dispatch(fetchTodoDetailData(checkedId));
-    }
-  }, [checkedId]);
 
   return (
     <>

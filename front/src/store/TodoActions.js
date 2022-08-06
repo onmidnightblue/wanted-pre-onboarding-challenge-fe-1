@@ -97,7 +97,7 @@ export const modifyTodoData = (todo, todoId) => {
       };
       await modifyData();
       dispatch(fetchTodoData());
-      dispatch(fetchTodoDetailData());
+      dispatch(fetchTodoDetailData(todoId));
     } catch (error) {
       console.log(error);
     }
