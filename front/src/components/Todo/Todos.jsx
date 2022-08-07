@@ -38,7 +38,6 @@ const Todos = () => {
 
   // goback & goforward refetch todo data
   useEffect(() => {
-    if (getId) return;
     if (checkedId) {
       const updateId = pathname.replace("/", "");
       setCheckedId(updateId);
@@ -46,6 +45,13 @@ const Todos = () => {
       dispatch(fetchTodoDetailData(checkedId));
     }
   }, [pathname]);
+
+  useEffect(() => {
+    if (checkedId) return;
+    if (!checkedId) {
+      navigate("/");
+    }
+  }, [checkedId]);
 
   // set checked id
   const onCheckedHandler = (id) => {
@@ -60,7 +66,6 @@ const Todos = () => {
     setCheckedId(null);
   };
   const modifyTodoHandler = (newTodo, checkedId) => {
-    console.log(checkedId);
     dispatch(modifyTodoData(newTodo, checkedId));
   };
   const removeTodoHandler = () => {
