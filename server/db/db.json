@@ -13,6 +13,13 @@
       "id": "M8UtCk1JilOZ3qBTjTYod",
       "createdAt": "2022-08-07T01:53:44.440Z",
       "updatedAt": "2022-08-07T01:53:44.440Z"
+    },
+    {
+      "title": "3",
+      "content": "3",
+      "id": "MeCW3kG5dgKSmPWxOuxAc",
+      "createdAt": "2022-08-07T12:34:47.068Z",
+      "updatedAt": "2022-08-07T12:34:47.068Z"
     }
   ],
   "users": [
@@ -22,20 +29,6 @@
       "id": "3sgXq35rzPVeg-ntoSeGz",
       "createdAt": "2022-07-29T01:12:54.785Z",
       "updatedAt": "2022-07-29T01:12:54.785Z"
-    },
-    {
-      "email": "chlwjddn300@naver.com",
-      "password": "12341234",
-      "id": "zwu1cRc6mo1rmNDDMhLiD",
-      "createdAt": "2022-08-07T01:04:44.770Z",
-      "updatedAt": "2022-08-07T01:04:44.770Z"
-    },
-    {
-      "email": "chlwjddn300@dongwo.com",
-      "password": "12341234",
-      "id": "XdBdwMnCGgKadwkI7SL3h",
-      "createdAt": "2022-08-07T01:52:05.667Z",
-      "updatedAt": "2022-08-07T01:52:05.667Z"
     }
   ]
 }

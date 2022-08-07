@@ -23,7 +23,8 @@ const Todos = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const getId = localStorage.getItem("todoId");
-  console.log(getId);
+  console.log("pathname", pathname);
+  console.log("checkedId", checkedId);
 
   // initial fetch todo data
   useEffect(() => {
@@ -32,12 +33,15 @@ const Todos = () => {
     if (getId) {
       navigate(`/${getId}`);
       setCheckedId(getId);
-      dispatch(fetchTodoDetailData(getId));
+      if (getId !== "null") {
+        dispatch(fetchTodoDetailData(getId));
+      }
     }
   }, []);
 
   // goback & goforward refetch todo data
   useEffect(() => {
+    if (pathname === "/") return;
     if (checkedId) {
       const updateId = pathname.replace("/", "");
       setCheckedId(updateId);
@@ -46,18 +50,14 @@ const Todos = () => {
     }
   }, [pathname]);
 
-  useEffect(() => {
-    if (checkedId) return;
-    if (!checkedId) {
-      navigate("/");
-    }
-  }, [checkedId]);
-
   // set checked id
   const onCheckedHandler = (id) => {
     navigate(`/${id}`);
     setCheckedId(id);
     localStorage.setItem("todoId", id);
+    if (id) {
+      dispatch(fetchTodoDetailData(id));
+    }
   };
 
   // add todo data & modify todo data & delete todo data

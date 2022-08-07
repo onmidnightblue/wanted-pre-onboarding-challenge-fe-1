@@ -12,7 +12,7 @@ export const LoggedContextProvider = (props) => {
 
   // storage 확인
   useEffect(() => {
-    const loggedTokenCheck = localStorage.getItem("token");
+    const loggedTokenCheck = localStorage.getItem("login");
     if (loggedTokenCheck) {
       navigate("/");
     } else {
@@ -22,12 +22,12 @@ export const LoggedContextProvider = (props) => {
 
   // login
   const loginHandler = (token) => {
-    localStorage.setItem("token", token);
+    localStorage.setItem("login", token);
   };
 
   // logout
   const logoutHandler = (token) => {
-    localStorage.removeItem("token", token);
+    localStorage.removeItem("login", token);
   };
 
   return (
