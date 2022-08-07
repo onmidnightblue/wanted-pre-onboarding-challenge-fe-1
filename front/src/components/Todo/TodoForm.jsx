@@ -38,11 +38,21 @@ const TodoForm = (props) => {
   const formContent = (
     <form onSubmit={onSubmit}>
       <div>
-        <input type="text" id="titleInput" ref={titleRef} />
+        <input
+          type="text"
+          id="titleInput"
+          ref={titleRef}
+          defaultValue={props.todoDetail?.title}
+        />
         <label htmlFor="titleInput">title</label>
       </div>
       <div className="content">
-        <textarea type="text" id="contentInput" ref={contentRef} />
+        <textarea
+          type="text"
+          id="contentInput"
+          ref={contentRef}
+          defaultValue={props.todoDetail?.content}
+        />
         <label htmlFor="contentInput">content</label>
       </div>
       <Button>{props.formOpenId === "modify" ? "complete" : "add"}</Button>

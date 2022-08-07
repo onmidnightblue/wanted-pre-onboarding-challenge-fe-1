@@ -1,25 +1,11 @@
 {
   "todos": [
     {
-      "title": "1",
-      "content": "1",
-      "id": "VPUFSyZKf5y0zKmto-ayl",
-      "createdAt": "2022-08-07T01:53:34.273Z",
-      "updatedAt": "2022-08-07T01:53:34.273Z"
-    },
-    {
-      "title": "2",
-      "content": "2",
-      "id": "M8UtCk1JilOZ3qBTjTYod",
-      "createdAt": "2022-08-07T01:53:44.440Z",
-      "updatedAt": "2022-08-07T01:53:44.440Z"
-    },
-    {
-      "title": "3",
-      "content": "3",
-      "id": "MeCW3kG5dgKSmPWxOuxAc",
-      "createdAt": "2022-08-07T12:34:47.068Z",
-      "updatedAt": "2022-08-07T12:34:47.068Z"
+      "title": "first todo",
+      "content": "first todo",
+      "id": "o_AlgfpSkWJbr1UkJAuk3",
+      "createdAt": "2022-08-07T16:12:41.697Z",
+      "updatedAt": "2022-08-07T16:12:41.697Z"
     }
   ],
   "users": [

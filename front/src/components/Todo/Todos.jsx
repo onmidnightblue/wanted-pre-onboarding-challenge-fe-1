@@ -23,8 +23,6 @@ const Todos = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const getId = localStorage.getItem("todoId");
-  console.log("pathname", pathname);
-  console.log("checkedId", checkedId);
 
   // initial fetch todo data
   useEffect(() => {
@@ -46,7 +44,7 @@ const Todos = () => {
       const updateId = pathname.replace("/", "");
       setCheckedId(updateId);
       localStorage.setItem("todoId", updateId);
-      dispatch(fetchTodoDetailData(checkedId));
+      dispatch(fetchTodoDetailData(updateId));
     }
   }, [pathname]);
 
@@ -72,6 +70,7 @@ const Todos = () => {
     if (checkedId) {
       dispatch(deleteTodo(checkedId));
       setCheckedId(null);
+      localStorage.removeItem("todoId");
     }
   };
 
@@ -81,23 +80,30 @@ const Todos = () => {
         <Header />
         <div className="list-wrap">
           <div className="list">
-            <ul>
-              {todos.map((todo) => (
-                <TodoItem
-                  key={todo.id}
-                  id={todo.id}
-                  title={todo.title}
-                  content={todo.content}
-                  checkedHandler={onCheckedHandler}
-                  checkedId={checkedId}
-                />
-              ))}
-            </ul>
+            {todos.length === 0 ? (
+              <div className="empty">
+                <p>please add to do item.</p>
+              </div>
+            ) : (
+              <ul>
+                {todos.map((todo) => (
+                  <TodoItem
+                    key={todo.id}
+                    id={todo.id}
+                    title={todo.title}
+                    content={todo.content}
+                    checkedHandler={onCheckedHandler}
+                    checkedId={checkedId}
+                  />
+                ))}
+              </ul>
+            )}
           </div>
           <div className="controller">
             <TodoController
               addTodo={addTodoHandler}
               modifyTodo={modifyTodoHandler}
+              todoDetail={todoDetail}
               removeTodo={removeTodoHandler}
               checkedId={checkedId}
             />
@@ -106,16 +112,16 @@ const Todos = () => {
       </Styles.List>
       <Styles.Detail>
         {checkedId ? (
-          <Styles.DetailContent>
+          <div className="detail-wrap">
             <h3 className="title">{todoDetail.title}</h3>
             <div className="content">
               <p>{todoDetail.content}</p>
             </div>
-          </Styles.DetailContent>
+          </div>
         ) : (
-          <Styles.Empty className="empty">
+          <div className="empty">
             <p>Please select a list item.</p>
-          </Styles.Empty>
+          </div>
         )}
       </Styles.Detail>
     </>
@@ -145,6 +151,14 @@ const Styles = {
         &::-webkit-scrollbar-track {
           background-color: #eee;
         }
+        .empty {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
       .controller {
         width: 100%;
@@ -155,25 +169,9 @@ const Styles = {
   `,
   Detail: styled(OuterLayout)`
     height: calc(30vh - 30px);
-  `,
-  Empty: styled.div`
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `,
-  DetailContent: styled.div`
-    width: 100%;
-    height: 100%;
-    .title {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-    .content {
-      height: calc(100% - 44px);
-      overflow-y: auto;
+    .detail-wrap {
+      width: 100%;
+      height: 100%;
       &::-webkit-scrollbar {
         width: 8px;
       }
@@ -183,6 +181,48 @@ const Styles = {
       &::-webkit-scrollbar-track {
         background-color: #eee;
       }
+      .title {
+        width: 100%;
+        font-size: 18px;
+        margin-bottom: 20px;
+        word-wrap: break-word;
+        height: 48px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #ddd;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: #eee;
+        }
+      }
+      .content {
+        width: 100%;
+        height: calc(100% - 44px);
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #ddd;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: #eee;
+        }
+        p {
+          word-wrap: break-word;
+        }
+      }
+    }
+    .empty {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   `,
 };
