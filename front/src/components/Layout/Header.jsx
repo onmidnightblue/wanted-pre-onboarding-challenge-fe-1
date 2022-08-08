@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BsCalendarCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import LoggedContext from "../../store/loggedContext";
 
 const Header = () => {
   const navigate = useNavigate();
-  const logged = useContext(LoggedContext);
 
   const logoutHandler = () => {
-    logged.onLogout();
+    localStorage.removeItem("login");
     navigate("/login");
   };
 

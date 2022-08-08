@@ -5,7 +5,6 @@
 
 - react router v6
 - axios
-- context API
 - styled-components
 - functional components
 - react-icons
@@ -45,7 +44,6 @@
 │
 ├─store
 │      Index.js
-│      loggedContext.jsx
 │      TodoActions.js
 │      TodoSlice.js
 │
@@ -61,7 +59,7 @@
 - pages
     - 로그인 페이지와 회원가입 페이지, 투두 페이지, 404 페이지로 구분했습니다.
 - store
-    - 로그인과 투두 상태를 관리하기 위한 컨택스트, 슬라이스가 위치합니다.
+    - 투두 상태를 관리하기 위한 슬라이스가 위치합니다.
 - utils
     - 로그인 검증을 위한 정규식 함수가 위치합니다.
 <br />

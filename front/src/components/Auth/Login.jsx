@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../UI/Input";
 import { checkEmail, checkPassword } from "../../utils/auth";
 import axios from "axios";
-import LoggedContext from "../../store/loggedContext";
 import Form from "../UI/Form";
 import Button from "../UI/Button";
 
@@ -15,7 +14,6 @@ const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const logged = useContext(LoggedContext);
 
   // email, password validation
   const emailHandler = () => {
@@ -55,7 +53,7 @@ const Login = () => {
       });
       const data = response.data;
       console.log(data.message);
-      logged.onLogin(data.token);
+      localStorage.setItem("login", data.token);
       navigate("/");
     } catch (error) {
       setError("Please check your email and password again.");
