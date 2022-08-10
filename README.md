@@ -1,4 +1,25 @@
-# 원티드 프리온보딩 프론트엔드 챌린지 1차 사전과제
+# Todo CRUD w React Query
+7.25 - 8.06 prev assignment <br />
+8.08 - 8.20 refactoring
+<br />
+<br />
+
+**content**
+
+- [Todo CRUD w React Query](#todo-crud-w-react-query)
+  - [:cloud: to use](#cloud-to-use)
+  - [:cloud: folder tree](#cloud-folder-tree)
+  - [:cloud: assignment](#cloud-assignment)
+    - [1 login / signup](#1-login--signup)
+    - [2 todo list](#2-todo-list)
+    - [참고 사항](#참고-사항)
+  - [:cloud: api](#cloud-api)
+    - [Todos](#todos)
+    - [Auth](#auth)
+  - [:cloud: refactoring](#cloud-refactoring)
+    - [과제를 수행하기 전에](#과제를-수행하기-전에)
+    - [과제 수행중](#과제-수행중)
+    - [과제를 수행한 후](#과제를-수행한-후)
 <br />
 
 ## :cloud: to use
@@ -140,3 +161,61 @@ login
   
 signUp
 - POST `/users/create`
+<br />
+
+## :cloud: refactoring
+
+:sparkles: refactoring을 진행하다 더 개선하고 싶은 부분을 발견하면 더 추가될 수 있습니다.
+<br />
+
+### 과제를 수행하기 전에
+- [ ]  google lighthouse 활용해서 성능 테스트 이미지 남기기
+- [ ]  dependencies, devDependencies 차이 알기
+<br />
+
+### 과제 수행중
+**[작은 것부터]**
+
+- 당장 수정해야 할 부분
+    - [ ]  페이지 브라우징 기록을 이용해 뒤로가기, 앞으로 가기 구현
+        - 현재 state로 되어있음
+    - [ ]  http 통신을 custom hook으로 작성
+<br />
+
+- UX/UI
+    - [ ]  시멘틱 태그 사용하기
+    - [ ]  loading, error를 사용자에게 보여주기
+    - [ ]  로그인 실패 사유를 사용자에게 알리기
+    - [ ]  회원가입 실패 사유를 사용자에게 알리기
+    - [ ]  비동기 통신을 진행할 때 진행 상태를 사용자에게 알리기 (loading, error)
+<br />
+
+- javascript > typescript
+    - [ ]  기존 프로젝트를 타입스크립트로 변환
+    - [ ]  react 프로젝트에 타입을 적용하면서 생기는 에러들을 노션에 정리
+<br />
+
+**[더 나아가서]**
+
+- build & deploy
+    - [ ]  dependencies, devDependencie를 공부했던 내용에 맞게 작성해보기
+    - [ ]  meta tag 작성
+    - [ ]  vercel로 배포
+<br />
+
+- 상태 관리
+    - [ ]  redux를 recoil로 바꾸기
+<br />
+
+- typescript
+    - [ ]  strict 옵션 적용
+    - [ ]  타입 가드 및 추론을 사용해 any, 타입 단언을 모두 없애기
+    - [ ]  반복되는 타입은 제네릭, 타입상속 or 합성 등으로 추상화
+    - [ ]  보다 좁은 타입으로 정의하기 (string > as const or union)
+<br />
+
+### 과제를 수행한 후
+- [ ]  google lighthouse 활용해서 성능 테스트 이미지 남기기
+- [ ]  완성된 사이트의 gif 이미지와 링크 공유하기
+- [ ]  javascript에서 typescript로 변경하면서 생긴 에러들을 readme에 작성하기
+<br />
