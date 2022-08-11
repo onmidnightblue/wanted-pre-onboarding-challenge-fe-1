@@ -16,16 +16,16 @@ const Header = () => {
   };
 
   return (
-    <Styles.Wrap>
+    <Styles.Header>
       <BsCalendarCheck onClick={homeHandler} size={18} />
       <span onClick={logoutHandler}>LOGOUT</span>
-    </Styles.Wrap>
+    </Styles.Header>
   );
 };
 
 // style
 const Styles = {
-  Wrap: styled.div`
+  Header: styled.header`
     width: 100%;
     display: flex;
     justify-content: space-between;

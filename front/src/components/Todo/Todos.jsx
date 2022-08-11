@@ -64,7 +64,7 @@ const Todos = () => {
   };
 
   return (
-    <>
+    <section>
       <Styles.List>
         <Header />
         <div className="list-wrap">
@@ -113,7 +113,7 @@ const Todos = () => {
           </div>
         )}
       </Styles.Detail>
-    </>
+    </section>
   );
 };
 
