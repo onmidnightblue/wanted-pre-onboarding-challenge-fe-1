@@ -169,15 +169,15 @@ signUp
 <br />
 
 ### 과제를 수행하기 전에
-- [ ]  google lighthouse 활용해서 성능 테스트 이미지 남기기
-- [ ]  dependencies, devDependencies 차이 알기
+- [x]  dependencies, devDependencies 차이 알기
+- [ ]  typescript 학습
 <br />
 
 ### 과제 수행중
 **[작은 것부터]**
 
 - 당장 수정해야 할 부분
-    - [ ]  페이지 브라우징 기록을 이용해 뒤로가기, 앞으로 가기 구현
+    - [x]  페이지 브라우징 기록을 이용해 뒤로가기, 앞으로 가기 구현
         - 현재 state로 되어있음
     - [ ]  http 통신을 custom hook으로 작성
 <br />
