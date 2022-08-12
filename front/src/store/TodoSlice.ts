@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { TodoState, TodoDetailState } from './../models/todo';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
   name: "todos",
@@ -7,10 +8,10 @@ const todoSlice = createSlice({
     todoDetail: {},
   },
   reducers: {
-    replaceTodo(state, action) {
+    replaceTodo(state: TodoState, action: PayloadAction<TodoState>) {
       state.todos = action.payload.todos;
     },
-    replaceTodoDetail(state, action) {
+    replaceTodoDetail(state: TodoDetailState, action: PayloadAction<TodoDetailState>) {
       state.todoDetail = action.payload.todoDetail;
     },
   },

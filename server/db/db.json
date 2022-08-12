@@ -1,20 +1,5 @@
 {
-  "todos": [
-    {
-      "title": "zzzdd",
-      "content": "zzzdd",
-      "id": "ulSggGAU5HpNTcvHqPbgL",
-      "createdAt": "2022-08-12T04:36:13.506Z",
-      "updatedAt": "2022-08-12T04:36:13.506Z"
-    },
-    {
-      "title": "e",
-      "content": "e",
-      "id": "N6kzGm7rzIciVxCXh2J0X",
-      "createdAt": "2022-08-12T04:37:00.280Z",
-      "updatedAt": "2022-08-12T04:37:00.280Z"
-    }
-  ],
+  "todos": [],
   "users": [
     {
       "email": "test@test.com",

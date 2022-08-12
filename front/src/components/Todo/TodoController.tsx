@@ -3,12 +3,12 @@ import styled from "styled-components";
 import TodoForm from "./TodoForm";
 
 const TodoController = (props) => {
-  const [addFormOpen, setAddFormOpen] = useState(false);
-  const [modifyFormOpen, setModifyFormOpen] = useState(false);
+  const [addFormOpen, setAddFormOpen] = useState<boolean>(false);
+  const [modifyFormOpen, setModifyFormOpen] = useState<boolean>(false);
 
   // form open
   const formOpenHandler = (event) => {
-    const id = event.target.id;
+    const id: string = event.target.id;
 
     if (id === "add") {
       if (addFormOpen) return setAddFormOpen(false);

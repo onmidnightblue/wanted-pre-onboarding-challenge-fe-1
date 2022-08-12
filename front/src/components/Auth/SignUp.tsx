@@ -4,24 +4,25 @@ import axios from "axios";
 import Form from "../UI/Form";
 import Button from "../UI/Button";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { PasswordType } from "src/models/auth";
 
-const SignUp = () => {
-  const [checkedAtSign, setCheckedAtSign] = useState(false);
-  const [checkedDot, setCheckedDot] = useState(false);
-  const [checkedCharacter, setCheckedCharacter] = useState(false);
-  const [validForm, setValidForm] = useState(false);
-  const [passwordType, setPasswordType] = useState({
+const SignUp:React.FC = () => {
+  const [checkedAtSign, setCheckedAtSign] = useState<boolean>(false);
+  const [checkedDot, setCheckedDot] = useState<boolean>(false);
+  const [checkedCharacter, setCheckedCharacter] = useState<boolean>(false);
+  const [validForm, setValidForm] = useState<boolean>(false);
+  const [passwordType, setPasswordType] = useState<PasswordType>({
     type: "password",
     visible: false,
   });
-  const [completeSignUp, setCompleteSignUp] = useState(false);
-  const [error, setError] = useState("");
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [completeSignUp, setCompleteSignUp] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>("");
+  const emailRef = useRef<HTMLInputElement>();
+  const passwordRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
 
   // password eye o_o
-  const passwordTypeHandler = (event) => {
+  const passwordTypeHandler = () => {
     setPasswordType(() => {
       if (!passwordType.visible) {
         return { type: "text", visible: true };
@@ -52,12 +53,12 @@ const SignUp = () => {
   };
 
   // api submit
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const enteredEmail = emailRef.current.value;
-    const trimEmail = enteredEmail.trim();
-    const enteredPassword = passwordRef.current.value;
+    const enteredEmail: string = emailRef.current.value;
+    const trimEmail: string  = enteredEmail.trim();
+    const enteredPassword: string  = passwordRef.current.value;
 
     if (!validForm) return;
 
@@ -80,7 +81,7 @@ const SignUp = () => {
 
   // button active
   useEffect(() => {
-    setError(false);
+    setError(null);
     if (checkedAtSign && checkedDot && checkedCharacter) {
       setValidForm(true);
     } else {

@@ -1,4 +1,4 @@
-export type PasswordTypes = {
-  type:string,
-  visible:boolean
+export type PasswordType = {
+  type: string,
+  visible: boolean
 }

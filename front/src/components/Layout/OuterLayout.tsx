@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReducerAction } from "react";
 import styled from "styled-components";
 
-const Layout = (props) => {
+const Layout: React.FC <{ children: React.ReactNode }> = (props) => {
   return <Styles.Wrap {...props}>{props.children}</Styles.Wrap>;
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const FormLayout = (props) => {
+const FormLayout: React.FC<{ children: React.ReactNode}> = (props) => {
   return <Styles.Wrap>{props.children}</Styles.Wrap>;
 };
 

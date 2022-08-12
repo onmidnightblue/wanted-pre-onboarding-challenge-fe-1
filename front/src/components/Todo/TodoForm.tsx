@@ -5,16 +5,16 @@ import FormLayout from "../Layout/FormLayout";
 import Button from "../UI/Button";
 
 const TodoForm = (props) => {
-  const titleRef = useRef();
-  const contentRef = useRef();
-  const [content, setContent] = useState(true);
+  const titleRef = useRef<HTMLInputElement>();
+  const contentRef = useRef<HTMLTextAreaElement>();
+  const [content, setContent] = useState<boolean>(true);
 
   // api submit
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const enteredTitle = titleRef.current.value;
-    const enteredContent = contentRef.current.value;
+    const enteredTitle: string = titleRef.current.value;
+    const enteredContent: string = contentRef.current.value;
 
     const todo = {
       title: enteredTitle,
@@ -48,7 +48,6 @@ const TodoForm = (props) => {
       </div>
       <div className="content">
         <textarea
-          type="text"
           id="contentInput"
           ref={contentRef}
           defaultValue={props.todoDetail?.content}
