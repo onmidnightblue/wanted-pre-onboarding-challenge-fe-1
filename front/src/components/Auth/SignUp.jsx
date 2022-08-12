@@ -1,38 +1,49 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkEmail, checkPassword } from "../../utils/auth";
 import axios from "axios";
-import Input from "../UI/Input";
 import Form from "../UI/Form";
 import Button from "../UI/Button";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const SignUp = () => {
-  const [validEmail, setValidEmail] = useState(null);
-  const [validPassword, setValidPassword] = useState(null);
+  const [checkedAtSign, setCheckedAtSign] = useState(false);
+  const [checkedDot, setCheckedDot] = useState(false);
+  const [checkedCharacter, setCheckedCharacter] = useState(false);
   const [validForm, setValidForm] = useState(false);
+  const [passwordType, setPasswordType] = useState({
+    type: "password",
+    visible: false,
+  });
   const [completeSignUp, setCompleteSignUp] = useState(false);
   const [error, setError] = useState("");
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
 
-  // email, password validation
-  const emailHandler = () => {
-    setValidEmail(checkEmail(emailRef.current.value));
-  };
-  const passWordHandler = () => {
-    setValidPassword(checkPassword(passwordRef.current.value));
+  // password eye o_o
+  const passwordTypeHandler = (event) => {
+    setPasswordType(() => {
+      if (!passwordType.visible) {
+        return { type: "text", visible: true };
+      }
+      return { type: "password", visible: false };
+    });
   };
 
-  // button active
-  useEffect(() => {
-    setError(false);
-    if (validEmail && validPassword) {
-      setValidForm(true);
-    } else {
-      setValidForm(false);
-    }
-  }, [validEmail, validPassword]);
+  // email, password validation
+  const emailHandler = () => {
+    const enteredEmail = emailRef.current.value;
+    enteredEmail.includes("@")
+      ? setCheckedAtSign(true)
+      : setCheckedAtSign(false);
+    enteredEmail.includes(".") ? setCheckedDot(true) : setCheckedDot(false);
+  };
+  const passWordHandler = () => {
+    const enteredPassword = passwordRef.current.value;
+    enteredPassword.length >= 8
+      ? setCheckedCharacter(true)
+      : setCheckedCharacter(false);
+  };
 
   // signup page link
   const goLogin = () => {
@@ -45,12 +56,15 @@ const SignUp = () => {
     event.preventDefault();
 
     const enteredEmail = emailRef.current.value;
+    const trimEmail = enteredEmail.trim();
     const enteredPassword = passwordRef.current.value;
+
+    if (!validForm) return;
 
     try {
       const url = "http://localhost:8080/users/create";
       const response = await axios.post(url, {
-        email: enteredEmail,
+        email: trimEmail,
         password: enteredPassword,
       });
       const data = response.data;
@@ -64,6 +78,16 @@ const SignUp = () => {
     }
   };
 
+  // button active
+  useEffect(() => {
+    setError(false);
+    if (checkedAtSign && checkedDot && checkedCharacter) {
+      setValidForm(true);
+    } else {
+      setValidForm(false);
+    }
+  }, [checkedAtSign, checkedDot, checkedCharacter]);
+
   return (
     <Form>
       {completeSignUp ? (
@@ -74,18 +98,38 @@ const SignUp = () => {
       ) : (
         <form onSubmit={onSubmit}>
           <h3>SIGNUP</h3>
-          <Input
-            ref={emailRef}
-            id="email"
-            type="text"
-            onChange={emailHandler}
-          />
-          <Input
-            ref={passwordRef}
-            id="password"
-            type="password"
-            onChange={passWordHandler}
-          />
+          <div className="input-wrap">
+            <label htmlFor="email">email</label>
+            <input
+              ref={emailRef}
+              id="email"
+              type="text"
+              onChange={emailHandler}
+            />
+            <div className="valid">
+              <span className={checkedAtSign ? "active" : ""}>at sign(@)</span>
+              <span className={checkedDot ? "active" : ""}>dot (.)</span>
+            </div>
+          </div>
+          <div className="input-wrap">
+            <label htmlFor="password">password</label>
+            <div className="password-input">
+              <input
+                ref={passwordRef}
+                id="password"
+                type={passwordType.type}
+                onChange={passWordHandler}
+              />
+              <div className="eye" onClick={passwordTypeHandler}>
+                {passwordType.visible ? <VscEyeClosed /> : <VscEye />}
+              </div>
+            </div>
+            <div className="valid">
+              <span className={checkedCharacter ? "active" : ""}>
+                atleast 8 charaters
+              </span>
+            </div>
+          </div>
           <Button className={validForm ? "" : "invalid"}>SIGNUP</Button>
           <p className="error">{error}</p>
           <span className="link" onClick={goLogin}>

@@ -1,33 +1,27 @@
 {
   "todos": [
     {
-      "title": "1",
-      "content": "1",
-      "id": "xezngk5MvEGJNYs365Wd9",
-      "createdAt": "2022-08-11T00:13:09.386Z",
-      "updatedAt": "2022-08-11T00:13:09.386Z"
+      "title": "zzzdd",
+      "content": "zzzdd",
+      "id": "ulSggGAU5HpNTcvHqPbgL",
+      "createdAt": "2022-08-12T04:36:13.506Z",
+      "updatedAt": "2022-08-12T04:36:13.506Z"
     },
     {
-      "title": "2",
-      "content": "2",
-      "id": "rnujG1Dc0O3LrK4xelRNT",
-      "createdAt": "2022-08-11T00:13:11.351Z",
-      "updatedAt": "2022-08-11T00:13:11.351Z"
-    },
-    {
-      "title": "3",
-      "content": "3",
-      "id": "ho8TJ9Ir6OWsFq9Ahm6L5",
-      "createdAt": "2022-08-11T00:13:13.327Z",
-      "updatedAt": "2022-08-11T00:13:13.327Z"
-    },
-    {
-      "title": "4",
-      "content": "4",
-      "id": "HeMJF9OCzXNAyEMMFeENe",
-      "createdAt": "2022-08-11T00:13:49.817Z",
-      "updatedAt": "2022-08-11T00:13:49.817Z"
+      "title": "e",
+      "content": "e",
+      "id": "N6kzGm7rzIciVxCXh2J0X",
+      "createdAt": "2022-08-12T04:37:00.280Z",
+      "updatedAt": "2022-08-12T04:37:00.280Z"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "12312312",
+      "id": "NUqaHnLLKVUTwn5UgYxla",
+      "createdAt": "2022-08-12T06:05:36.815Z",
+      "updatedAt": "2022-08-12T06:05:36.815Z"
+    }
+  ]
 }
