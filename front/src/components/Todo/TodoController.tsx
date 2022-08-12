@@ -27,6 +27,11 @@ const TodoController = (props) => {
     setModifyFormOpen(false);
   };
 
+  const modifyTodoHandler = (newTodo, checkedId) => {
+    props.modifyTodoData(newTodo, checkedId)
+    setModifyFormOpen(false);
+  };
+
   // delete
   const todoFormClose = () => {
     setModifyFormOpen(false);
@@ -39,7 +44,7 @@ const TodoController = (props) => {
       {modifyFormOpen && (
         <TodoForm
           formOpenId="modify"
-          todoHandler={props.modifyTodo}
+          todoHandler={modifyTodoHandler}
           existCheckedId={props.checkedId}
           onClose={modifyFormClose}
           todoDetail={props.todoDetail}
