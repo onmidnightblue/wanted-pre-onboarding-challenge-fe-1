@@ -7,7 +7,7 @@ import {
   fetchTodoDetailData,
   modifyTodoData,
 } from "../../store/TodoActions";
-import Header from "../../components/Layout/Header";
+import Header from "../Layout/Header";
 import TodoController from "./TodoController";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";

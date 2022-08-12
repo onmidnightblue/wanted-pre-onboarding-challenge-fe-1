@@ -4,23 +4,24 @@ import axios from "axios";
 import Form from "../UI/Form";
 import Button from "../UI/Button";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { PasswordTypes } from "src/models/auth";
 
 const Login = () => {
-  const [checkedAtSign, setCheckedAtSign] = useState(null);
-  const [checkedDot, setCheckedDot] = useState(null);
-  const [checkedCharacter, setCheckedCharacter] = useState(null);
-  const [validForm, setValidForm] = useState(false);
-  const [passwordType, setPasswordType] = useState({
+  const [checkedAtSign, setCheckedAtSign] = useState<null | boolean>(null);
+  const [checkedDot, setCheckedDot] = useState<null | boolean>(null);
+  const [checkedCharacter, setCheckedCharacter] = useState<null | boolean>(null);
+  const [validForm, setValidForm] = useState<boolean>(false);
+  const [passwordType, setPasswordType] = useState<PasswordTypes>({
     type: "password",
     visible: false,
   });
-  const [error, setError] = useState("");
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const navigate = useNavigate();
+  const [error, setError] = useState<string>("");
+  const emailRef = useRef<HTMLInputElement>();
+  const passwordRef = useRef<HTMLInputElement>();
+  const navigate = useNavigate(); 
 
   // password eye o_o
-  const passwordTypeHandler = (event) => {
+  const passwordTypeHandler = () => {
     setPasswordType(() => {
       if (!passwordType.visible) {
         return { type: "text", visible: true };
