@@ -6,12 +6,13 @@ import Button from "../UI/Button";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { PasswordTypes } from "src/models/todosTypes";
 
-const Login = () => {
+const Login: React.FC = () => {
   const [checkedAtSign, setCheckedAtSign] = useState<null | boolean>(null);
   const [checkedDot, setCheckedDot] = useState<null | boolean>(null);
   const [checkedCharacter, setCheckedCharacter] = useState<null | boolean>(null);
   const [validForm, setValidForm] = useState<boolean>(false);
   const [passwordType, setPasswordType] = useState<PasswordTypes>({
+
     type: "password",
     visible: false,
   });
@@ -21,7 +22,7 @@ const Login = () => {
   const navigate = useNavigate(); 
 
   // password eye o_o
-  const passwordTypeHandler = () => {
+  const passwordTypeHandler = ():void => {
     setPasswordType(() => {
       if (!passwordType.visible) {
         return { type: "text", visible: true };
@@ -31,32 +32,31 @@ const Login = () => {
   };
 
   // email, password validation
-  const emailHandler = () => {
-    const enteredEmail = emailRef.current.value;
+  const emailHandler = ():void => {
+    const enteredEmail: string = emailRef.current.value;
     enteredEmail.includes("@")
       ? setCheckedAtSign(true)
       : setCheckedAtSign(false);
     enteredEmail.includes(".") ? setCheckedDot(true) : setCheckedDot(false);
   };
-  const passWordHandler = () => {
-    const enteredPassword = passwordRef.current.value;
+  const passWordHandler = ():void => {
+    const enteredPassword: string = passwordRef.current.value;
     enteredPassword.length >= 8
       ? setCheckedCharacter(true)
       : setCheckedCharacter(false);
   };
 
   // signup page link
-  const goSignUp = () => {
+  const goSignUp = ():void => {
     navigate("/signup");
   };
 
   // api submit
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    const enteredEmail = emailRef.current.value;
-    const trimEmail = enteredEmail.trim();
-    const enteredPassword = passwordRef.current.value;
+    const enteredEmail: string = emailRef.current.value;
+    const trimEmail: string  = enteredEmail.trim();
+    const enteredPassword: string  = passwordRef.current.value;
 
     if (!validForm) return;
 

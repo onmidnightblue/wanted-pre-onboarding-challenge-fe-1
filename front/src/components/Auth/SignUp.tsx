@@ -6,7 +6,7 @@ import Button from "../UI/Button";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { PasswordTypes } from "src/models/todosTypes";
 
-const SignUp = () => {
+const SignUp:React.FC = () => {
   const [checkedAtSign, setCheckedAtSign] = useState<boolean>(false);
   const [checkedDot, setCheckedDot] = useState<boolean>(false);
   const [checkedCharacter, setCheckedCharacter] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const SignUp = () => {
     visible: false,
   });
   const [completeSignUp, setCompleteSignUp] = useState<boolean>(false);
-  const [error, setError] = useState<string | boolean>("");
+  const [error, setError] = useState<string | null>("");
   const emailRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
@@ -55,10 +55,9 @@ const SignUp = () => {
   // api submit
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    const enteredEmail = emailRef.current.value;
-    const trimEmail = enteredEmail.trim();
-    const enteredPassword = passwordRef.current.value;
+    const enteredEmail: string = emailRef.current.value;
+    const trimEmail: string  = enteredEmail.trim();
+    const enteredPassword: string  = passwordRef.current.value;
 
     if (!validForm) return;
 
@@ -81,7 +80,7 @@ const SignUp = () => {
 
   // button active
   useEffect(() => {
-    setError(false);
+    setError(null);
     if (checkedAtSign && checkedDot && checkedCharacter) {
       setValidForm(true);
     } else {

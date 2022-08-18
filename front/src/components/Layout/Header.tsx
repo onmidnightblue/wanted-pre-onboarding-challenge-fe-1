@@ -3,15 +3,15 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Header = () => {
+const Header: React.FC = () => {
   const navigate = useNavigate();
 
-  const logoutHandler = () => {
+  const logoutHandler = ():void => {
     localStorage.removeItem("login");
     navigate("/login");
   };
 
-  const homeHandler = () => {
+  const homeHandler = ():void => {
     navigate("/");
   };
 

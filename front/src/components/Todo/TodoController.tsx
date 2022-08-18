@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { TodoControllerProps } from "src/models/todosTypes";
+import { newTodoType, TodoControllerProps } from "src/models/todosTypes";
 import styled from "styled-components";
 import TodoForm from "./TodoForm";
+
 
 const TodoController = (props: TodoControllerProps) => {
   const [addFormOpen, setAddFormOpen] = useState<boolean>(false);
@@ -29,6 +30,11 @@ const TodoController = (props: TodoControllerProps) => {
     setModifyFormOpen(false);
   };
 
+  const modifyTodoHandler = (newTodo: newTodoType, checkedId: string) => {
+    props.modifyTodo(newTodo, checkedId)
+    setModifyFormOpen(false);
+  };
+
   // delete
   const todoFormClose = () => {
     setModifyFormOpen(false);
@@ -41,7 +47,7 @@ const TodoController = (props: TodoControllerProps) => {
       {modifyFormOpen && (
         <TodoForm
           formOpenId="modify"
-          todoHandler={props.modifyTodo}
+          todoHandler={modifyTodoHandler}
           existCheckedId={props.checkedId}
           onClose={modifyFormClose}
           todoDetail={props.todoDetail}

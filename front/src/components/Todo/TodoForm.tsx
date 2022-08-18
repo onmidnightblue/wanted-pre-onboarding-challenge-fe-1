@@ -11,8 +11,8 @@ const TodoForm = (props) => {
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    const enteredTitle = titleRef.current.value;
-    const enteredContent = contentRef.current.value;
+    const enteredTitle: string = titleRef.current.value;
+    const enteredContent: string = contentRef.current.value;
 
     const todo = {
       title: enteredTitle,
