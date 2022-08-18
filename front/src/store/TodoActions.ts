@@ -1,4 +1,5 @@
 import axios from "axios";
+import { newTodoType, TodoDataType } from "src/models/todosTypes";
 import { todoActions } from "./TodoSlice";
 
 export const fetchTodoData = () => {
@@ -6,12 +7,12 @@ export const fetchTodoData = () => {
     try {
       const fetchData = async () => {
         const url = "http://localhost:8080/todos";
-        const response = await axios.get(url, {
+        const response = await axios.get<TodoDataType[]>(url, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         });
-        const data = response.data.data;
+        const data = response.data;
         return data;
       };
       const todoData = await fetchData();
@@ -26,17 +27,17 @@ export const fetchTodoData = () => {
   };
 };
 
-export const fetchTodoDetailData = (todoId) => {
+export const fetchTodoDetailData = (todoId: string) => {
   return async (dispatch) => {
     try {
       const fetchData = async () => {
         const url = `http://localhost:8080/todos/${todoId}`;
-        const response = await axios.get(url, {
+        const response = await axios.get<TodoDataType>(url, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         });
-        const data = response.data.data;
+        const data = response.data;
         return data;
       };
       const todoDetailData = await fetchData();
@@ -51,12 +52,12 @@ export const fetchTodoDetailData = (todoId) => {
   };
 };
 
-export const addTodoData = (todo) => {
+export const addTodoData = (todo: newTodoType) => {
   return async (dispatch) => {
     try {
       const addData = async () => {
         const url = "http://localhost:8080/todos";
-        await axios.post(
+        await axios.post<newTodoType>(
           url,
           {
             title: todo.title,
@@ -77,7 +78,7 @@ export const addTodoData = (todo) => {
   };
 };
 
-export const modifyTodoData = (todo, todoId) => {
+export const modifyTodoData = (todo: newTodoType, todoId: string) => {
   return async (dispatch) => {
     try {
       const modifyData = async () => {
@@ -104,7 +105,7 @@ export const modifyTodoData = (todo, todoId) => {
   };
 };
 
-export const deleteTodo = (todoId) => {
+export const deleteTodo = (todoId: string) => {
   return async (dispatch) => {
     try {
       const deleteData = async () => {

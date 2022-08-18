@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import SignUpPage from "./pages/SignUpPage";
 
-function App() {
+const App: React.FC = () => {
   const navigate = useNavigate();
 
   // login storage 확인

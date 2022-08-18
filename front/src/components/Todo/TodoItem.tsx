@@ -1,9 +1,10 @@
 import React from "react";
+import { TodoItemsProps } from "src/models/todosTypes";
 import styled from "styled-components";
 
-const TodoItem = (props) => {
-  const onCheckedHandler = (event) => {
-    const userCheckedId = event.target.id;
+const TodoItem = (props: TodoItemsProps) => {
+  const onCheckedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const userCheckedId: string | null = event.target.id;
     const checked = event.target.checked;
 
     if (checked) {

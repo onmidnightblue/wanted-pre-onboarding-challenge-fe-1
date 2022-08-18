@@ -4,7 +4,7 @@ import axios from "axios";
 import Form from "../UI/Form";
 import Button from "../UI/Button";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
-import { PasswordTypes } from "src/models/auth";
+import { PasswordTypes } from "src/models/todosTypes";
 
 const Login = () => {
   const [checkedAtSign, setCheckedAtSign] = useState<null | boolean>(null);
@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   // api submit
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const enteredEmail = emailRef.current.value;

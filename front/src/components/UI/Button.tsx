@@ -1,7 +1,8 @@
 import React from "react";
+import { ChildrenProps } from "src/models/todosTypes";
 import styled from "styled-components";
 
-const Button = (props) => {
+const Button = (props: ChildrenProps) => {
   return <Styles.Button {...props}>{props.children}</Styles.Button>;
 };
 

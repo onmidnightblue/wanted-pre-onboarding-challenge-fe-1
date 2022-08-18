@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTodoData } from "../../store/TodoActions";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import FormLayout from "../Layout/FormLayout";
 import Button from "../UI/Button";
 
 const TodoForm = (props) => {
-  const titleRef = useRef();
-  const contentRef = useRef();
-  const [content, setContent] = useState(true);
+  const titleRef = useRef<HTMLInputElement>();
+  const contentRef = useRef<HTMLTextAreaElement>();
+  const [content, setContent] = useState<boolean>(true);
 
   // api submit
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     const enteredTitle = titleRef.current.value;
@@ -48,7 +46,6 @@ const TodoForm = (props) => {
       </div>
       <div className="content">
         <textarea
-          type="text"
           id="contentInput"
           ref={contentRef}
           defaultValue={props.todoDetail?.content}

@@ -1,17 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { TodoDataType } from './../models/todosTypes';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ResponseType } from "src/models/todosTypes";
+
+const initialState: ResponseType = {
+  todos: [],
+  todoDetail: {
+    title: "",
+    content: "",
+    id: "",
+    createdAt: "",
+    updatedAt: ""
+  },
+}
 
 const todoSlice = createSlice({
   name: "todos",
-  initialState: {
-    todos: [],
-    todoDetail: {},
-  },
+  initialState,
   reducers: {
-    replaceTodo(state, action) {
-      state.todos = action.payload.todos;
+    replaceTodo(state, action: PayloadAction<TodoDataType[]>) {
+      state.todos = action.payload;
     },
-    replaceTodoDetail(state, action) {
-      state.todoDetail = action.payload.todoDetail;
+    replaceTodoDetail(state, action: PayloadAction<TodoDataType>) {
+      state.todoDetail = action.payload;
     },
   },
 });

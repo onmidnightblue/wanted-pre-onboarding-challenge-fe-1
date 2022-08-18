@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { TodoControllerProps } from "src/models/todosTypes";
 import styled from "styled-components";
 import TodoForm from "./TodoForm";
 
-const TodoController = (props) => {
-  const [addFormOpen, setAddFormOpen] = useState(false);
-  const [modifyFormOpen, setModifyFormOpen] = useState(false);
+const TodoController = (props: TodoControllerProps) => {
+  const [addFormOpen, setAddFormOpen] = useState<boolean>(false);
+  const [modifyFormOpen, setModifyFormOpen] = useState<boolean>(false);
 
   // form open
-  const formOpenHandler = (event) => {
-    const id = event.target.id;
+  const formOpenHandler = (event: React.MouseEvent) => {
+    const target = event.target as HTMLInputElement
+    const id = target.id;
 
     if (id === "add") {
       if (addFormOpen) return setAddFormOpen(false);

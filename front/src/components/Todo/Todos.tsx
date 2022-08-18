@@ -13,12 +13,14 @@ import TodoItem from "./TodoItem";
 import styled from "styled-components";
 import OuterLayout from "../Layout/OuterLayout";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AppDispatch, RootState,  } from "src/store/Index";
+import { newTodoType } from "src/models/todosTypes";
 
-const Todos = () => {
-  const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos.todos);
-  const todoDetail = useSelector((state) => state.todos.todoDetail);
-  const [checkedId, setCheckedId] = useState(null);
+const Todos: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const todos = useSelector((state: RootState) => state.todos.todos);
+  const todoDetail = useSelector((state: RootState) => state.todos.todoDetail);
+  const [checkedId, setCheckedId] = useState<null | string>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -41,18 +43,18 @@ const Todos = () => {
   }, [pathname]);
 
   // set checked id
-  const onCheckedHandler = (id) => {
+  const onCheckedHandler = (id: string) => {
     setCheckedId(id);
     navigate(`/${id}`);
     localStorage.setItem("todoId", id);
   };
 
   // add todo data & modify todo data & delete todo data
-  const addTodoHandler = (newTodo) => {
+  const addTodoHandler = (newTodo: newTodoType) => {
     dispatch(addTodoData(newTodo));
     setCheckedId(null);
   };
-  const modifyTodoHandler = (newTodo, checkedId) => {
+  const modifyTodoHandler = (newTodo: newTodoType, checkedId: string) => {
     dispatch(modifyTodoData(newTodo, checkedId));
   };
   const removeTodoHandler = () => {

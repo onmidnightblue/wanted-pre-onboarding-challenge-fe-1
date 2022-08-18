@@ -1,7 +1,8 @@
 import React from "react";
+import { ChildrenProps } from "src/models/todosTypes";
 import styled from "styled-components";
 
-const FormLayout = (props) => {
+const FormLayout = (props: ChildrenProps) => {
   return <Styles.Wrap>{props.children}</Styles.Wrap>;
 };
 
