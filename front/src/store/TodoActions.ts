@@ -7,12 +7,12 @@ export const fetchTodoData = () => {
     try {
       const fetchData = async () => {
         const url = "http://localhost:8080/todos";
-        const response = await axios.get<TodoDataType[]>(url, {
+        const response = await axios.get<any>(url, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         });
-        const data = response.data;
+        const data = response.data.data;
         return data;
       };
       const todoData = await fetchData();
@@ -32,12 +32,12 @@ export const fetchTodoDetailData = (todoId: string) => {
     try {
       const fetchData = async () => {
         const url = `http://localhost:8080/todos/${todoId}`;
-        const response = await axios.get<TodoDataType>(url, {
+        const response = await axios.get<any>(url, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         });
-        const data = response.data;
+        const data = response.data.data;
         return data;
       };
       const todoDetailData = await fetchData();

@@ -1,5 +1,13 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "title": "second todo",
+      "content": "second todo",
+      "id": "VsRUU9LtVsYijwNtgYOS1",
+      "createdAt": "2022-08-18T14:13:35.693Z",
+      "updatedAt": "2022-08-18T14:13:35.693Z"
+    }
+  ],
   "users": [
     {
       "email": "test@test.com",
