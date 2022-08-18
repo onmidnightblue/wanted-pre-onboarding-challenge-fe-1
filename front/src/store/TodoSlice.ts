@@ -17,11 +17,11 @@ const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    replaceTodo(state, action: PayloadAction<TodoDataType[]>) {
-      state.todos = action.payload;
+    replaceTodo(state, action: PayloadAction<{todos: TodoDataType[]}>) {
+      state.todos = action.payload.todos;
     },
-    replaceTodoDetail(state, action: PayloadAction<TodoDataType>) {
-      state.todoDetail = action.payload;
+    replaceTodoDetail(state, action: PayloadAction<{todoDetail: TodoDataType}>) {
+      state.todoDetail = action.payload.todoDetail;
     },
   },
 });

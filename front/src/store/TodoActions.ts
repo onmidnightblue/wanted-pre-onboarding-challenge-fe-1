@@ -43,7 +43,7 @@ export const fetchTodoDetailData = (todoId: string) => {
       const todoDetailData = await fetchData();
       dispatch(
         todoActions.replaceTodoDetail({
-          todoDetail: todoDetailData || {},
+          todoDetail: todoDetailData,
         })
       );
     } catch (error) {
