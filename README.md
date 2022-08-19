@@ -2,12 +2,14 @@
 7.25 - 8.06 prev assignment <br />
 8.08 - 8.20 refactoring
 <br />
-<br />
+
+![untitled](https://user-images.githubusercontent.com/92494452/185583426-56433b85-e6b5-4b16-b7e0-2f13b8cf875d.gif)
 
 **content**
 
 - [Todo CRUD w React Query](#todo-crud-w-react-query)
   - [:cloud: to use](#cloud-to-use)
+  - [:cloud: start](#cloud-start)
   - [:cloud: folder tree](#cloud-folder-tree)
   - [:cloud: assignment](#cloud-assignment)
     - [1 login / signup](#1-login--signup)
@@ -33,9 +35,16 @@
 - styled-components
 - functional components
 - react-icons
-- redux
+- redux-toolkit
 <br />
 
+## :cloud: start
+
+```
+$ git clone https://github.com/onmidnightblue/wanted-pre-onboarding-challenge-fe-1.git
+$ npm start
+```
+<br />
 
 ## :cloud: folder tree
 
@@ -195,9 +204,9 @@ signUp
 - [x]  로그인 시 조건 충족 여부를 사용자에게 보여주기
 - [x]  로그인, 회원가입 입력 시 이메일에 공백 처리하기
 - [x]  비밀번호 입력한 것을 눈 아이콘으로 확인할 수 있게 하기
+- [x]  체크 리스트 형태
 - [ ]  비동기 통신을 진행할 때 진행 상태를 사용자에게 알리기 (loading, error)
     - 로딩 시간이 짧으므로 promise로 일부러 특정 시간을 걸어주기
-- [x]  체크 리스트 형태
 <br />
 
 ### typescript
@@ -218,10 +227,10 @@ signUp
 
 ### description
 - [x]  폴더 구조 설명
+- [x]  완성된 사이트의 gif 이미지 공유하기
+- [x]  사용한 프레임워크 및 라이브러리 설명
+- [x]  설치, 환경설정 및 실행 방법 readme에 작성하기
 - [ ]  한계점 및 개선 사항 작성
-- [ ]  설치, 환경설정 및 실행 방법 readme에 작성하기
-- [ ]  google lighthouse 활용해서 성능 테스트 이미지 남기기
-- [ ]  완성된 사이트의 gif 이미지와 링크 공유하기
 - [ ]  과제 진행 시 고민한 부분에 대해 서술
 - [ ]  javascript에서 typescript로 변경하면서 생긴 에러들을 노션 공유하기
-- [ ]  사용한 프레임워크 및 라이브러리 package.json 참조해서 설명
+
