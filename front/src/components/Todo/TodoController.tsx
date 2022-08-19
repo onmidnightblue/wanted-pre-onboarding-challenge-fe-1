@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { newTodoType, TodoControllerProps } from "src/models/todosTypes";
 import styled from "styled-components";
 import TodoForm from "./TodoForm";
@@ -7,6 +7,11 @@ import TodoForm from "./TodoForm";
 const TodoController = (props: TodoControllerProps) => {
   const [addFormOpen, setAddFormOpen] = useState<boolean>(false);
   const [modifyFormOpen, setModifyFormOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    setModifyFormOpen(false)
+    setAddFormOpen(false)
+  }, [props.checkedId])
 
   // form open
   const formOpenHandler = (event: React.MouseEvent) => {

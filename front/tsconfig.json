@@ -13,12 +13,15 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "allowJs": true
+    "allowJs": true,
+    "strict": false,
+    "noImplicitAny": false, 
+    "strictNullChecks": false,   
+    "strictFunctionTypes": false,  
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
   },
   "include": ["./src"]
 }

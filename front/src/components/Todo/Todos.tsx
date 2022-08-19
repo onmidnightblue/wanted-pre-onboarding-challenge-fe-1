@@ -31,7 +31,10 @@ const Todos: React.FC = () => {
     dispatch(fetchTodoData());
 
     if (!checkedId) return setCheckedId(localstorageGetId);
-    if (checkedId === "null") return;
+    if (!checkedId && checkedId === "null") {
+      dispatch(fetchTodoDetailData(null))
+      return
+    }
     dispatch(fetchTodoDetailData(checkedId));
   }, [checkedId]);
 
@@ -102,11 +105,11 @@ const Todos: React.FC = () => {
         </div>
       </Styles.List>
       <Styles.Detail>
-        {checkedId ? (
+        {checkedId && checkedId !== "null" ? (
           <div className="detail-wrap">
-            <h3 className="title">{todoDetail.title}</h3>
+            <h3 className="title">{todoDetail?.title}</h3>
             <div className="content">
-              <p>{todoDetail.content}</p>
+              <p>{todoDetail?.content}</p>
             </div>
           </div>
         ) : (

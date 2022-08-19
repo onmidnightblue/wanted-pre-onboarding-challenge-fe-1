@@ -1,5 +1,5 @@
 import axios from "axios";
-import { newTodoType, TodoDataType } from "src/models/todosTypes";
+import { newTodoType } from "src/models/todosTypes";
 import { todoActions } from "./TodoSlice";
 
 export const fetchTodoData = () => {
@@ -29,6 +29,15 @@ export const fetchTodoData = () => {
 
 export const fetchTodoDetailData = (todoId: string) => {
   return async (dispatch) => {
+    if (todoId === "null") {
+      dispatch(
+        todoActions.replaceTodoDetail({
+          todoDetail: null,
+        })
+      );
+      return
+    }
+
     try {
       const fetchData = async () => {
         const url = `http://localhost:8080/todos/${todoId}`;
@@ -107,6 +116,15 @@ export const modifyTodoData = (todo: newTodoType, todoId: string) => {
 
 export const deleteTodo = (todoId: string) => {
   return async (dispatch) => {
+    if (todoId === "null") {
+      dispatch(
+        todoActions.replaceTodoDetail({
+          todoDetail: null,
+        })
+      );
+      return
+    }
+    
     try {
       const deleteData = async () => {
         const url = `http://localhost:8080/todos/${todoId}`;

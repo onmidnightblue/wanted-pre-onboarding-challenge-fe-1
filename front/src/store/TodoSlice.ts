@@ -20,7 +20,7 @@ const todoSlice = createSlice({
     replaceTodo(state, action: PayloadAction<{todos: TodoDataType[]}>) {
       state.todos = action.payload.todos;
     },
-    replaceTodoDetail(state, action: PayloadAction<{todoDetail: TodoDataType}>) {
+    replaceTodoDetail(state, action: PayloadAction<{todoDetail: TodoDataType | null}>) {
       state.todoDetail = action.payload.todoDetail;
     },
   },
